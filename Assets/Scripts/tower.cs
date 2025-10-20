@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
@@ -85,3 +86,4 @@ public abstract class Tower : MonoBehaviour
         health *= 1.1f; // Example: increase health by 10%
     }
 }
+*/
