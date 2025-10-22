@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CantPlace
   - CanPlace
+  - Enemy
   layers:
   - Default
   - TransparentFX
