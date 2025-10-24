@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (nodes == null || nodes.Length == 0) return;
+        if (nodes == null || nodes.Length == 0) return;
 
         // Move toward the current node
         Transform target = nodes[currentNode];
@@ -38,9 +38,10 @@ public class Enemy : MonoBehaviour
                 enabled = false; // stop moving
             }
         }
-    
-    }
 
+    }
+    
+/*
     private void OnTriggerEnter(Collider other)
     {
 
@@ -51,8 +52,9 @@ public class Enemy : MonoBehaviour
             Debug.Log("Something hit me!");
         }
     }
+*/
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
