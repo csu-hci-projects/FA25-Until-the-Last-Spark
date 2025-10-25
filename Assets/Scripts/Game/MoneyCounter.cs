@@ -12,6 +12,6 @@ public class MoneyCounter : MonoBehaviour
 
     public void Update()
     {
-        txt.text = GameLoopManager.money + "$"; //Update the text to show current money
+        txt.text = "$ " + GameLoopManager.money; //Update the text to show current money
     }
 }
