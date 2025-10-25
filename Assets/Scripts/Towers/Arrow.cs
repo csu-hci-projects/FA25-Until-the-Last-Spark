@@ -4,11 +4,17 @@ public class Arrow : MonoBehaviour
 {
     private Transform target;
     private float speed = 15f;
-    public float damage = 0f; 
-    
+    public float damage = 0f;
+
     public void Seek(Transform _target)
     {
         target = _target;
+    }
+    
+    public void SetTarget(GameObject _target, float _damage)
+    {
+        target = _target.transform;
+        damage = _damage;
     }
 
     void Update()
