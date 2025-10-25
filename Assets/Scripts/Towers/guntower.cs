@@ -12,7 +12,7 @@ public class GunnerTower : Tower
         if (bulletPrefab != null && firePoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-            Bullet b = bullet.GetComponent<Bullet>();
+            Arrow b = bullet.GetComponent<Arrow>();
             if (b != null)
             {
                 b.SetTarget(enemy, damage);
