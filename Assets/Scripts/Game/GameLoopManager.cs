@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameLoopManager : MonoBehaviour
 {
-
+    public static int money = 10; // Starting money
     public bool endLoop;
 
 

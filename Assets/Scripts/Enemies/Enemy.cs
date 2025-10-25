@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             spawner.EnemyDestroyed();
+            GameLoopManager.money += 1; //Reward player with money for destroying enemy
             Destroy(gameObject);
             
         }
