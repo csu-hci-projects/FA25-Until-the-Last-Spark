@@ -6,11 +6,11 @@ public class ShopMenu : MonoBehaviour
     public static bool isShopOpen = false;
     public static bool boughtTower = false;
 
-    public int towerType = 0; // 0 = towerPrefab0, 1 = towerPrefab1, 2 = towerPrefab2
+    public int towerType = 0; // 0 = towerPrefab[0], 1 = towerPrefab[1], 2 = towerPrefab[2]
     public GameObject shopMenuUI;
 
-    [SerializeField] int placeObjectCamerOffset = 30;
-    [SerializeField] GameObject[] towerPrefab;
+    [SerializeField] int placeObjectCamerOffset = 30; //Distance from camera to place object in world
+    [SerializeField] GameObject[] towerPrefab; //Hold different tower prefabs for purchase
 
 
 
@@ -35,14 +35,14 @@ public class ShopMenu : MonoBehaviour
         if (boughtTower && Input.GetMouseButtonDown(0))
         {
             Debug.Log("In buy mode, click to place tower.");
-           
+
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = placeObjectCamerOffset; // Set this to be the distance from the camera to the object you want to place
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
             switch (towerType) //Can add more tower types here as needed
             {
-                case 0: 
+                case 0:
                     Instantiate(towerPrefab[0], worldPos, Quaternion.identity);
                     break;
                 case 1:
@@ -52,8 +52,9 @@ public class ShopMenu : MonoBehaviour
                     Debug.LogWarning("Invalid tower type selected!");
                     break;
             }
-            boughtTower = false;   
+            boughtTower = false;
         }
+        Debug.Log("Money: " + GameLoopManager.money);
 
     }
 
@@ -73,18 +74,40 @@ public class ShopMenu : MonoBehaviour
 
     public void buyTower1()
     {
-        Debug.Log("Tower Purchased!");
-        closeShop();
-        towerType = 0;
-        boughtTower = true;
+        if (CanAffordTower(10)) // Example cost
+        {
+            Debug.Log("Tower Purchased!");
+            closeShop();
+            towerType = 0;
+            GameLoopManager.money -= 10;
+            boughtTower = true;
+        }
+        else
+        {
+            Debug.Log("Not enough money to buy Tower 1!");
+        }
     }
 
     public void buyTower2()
     {
-        Debug.Log("Tower Purchased!");
-        closeShop();
-        towerType = 1;
-        boughtTower = true;
+        if (CanAffordTower(20)) // Example cost
+        {
+            Debug.Log("Tower Purchased!");
+            closeShop();
+            towerType = 1;
+            GameLoopManager.money -= 20;
+            boughtTower = true;
+        }
+        else
+        {
+            Debug.Log("Not enough money to buy Tower 2!");
+        }
+    }
+
+    public bool CanAffordTower(int cost)
+    {
+        //Placeholder for checking if player has enough currency to buy tower
+        return GameLoopManager.money >= cost;
     }
 
 }
