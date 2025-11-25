@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
 
     private int currentNode = 0;
 
+    private int moneyReward = 1;
+    private int damageFactor = 1;
+
     
 
     void Start()
@@ -36,6 +39,9 @@ public class Enemy : MonoBehaviour
             {
                 // Reached end of path
                 enabled = false; // stop moving
+                spawner.EnemyDestroyed();
+                Destroy(gameObject);
+                GameLoopManager.health -= damageFactor;
             }
         }
 
@@ -60,7 +66,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             spawner.EnemyDestroyed();
-            GameLoopManager.money += 1; //Reward player with money for destroying enemy
+            GameLoopManager.money += moneyReward; //Reward player with money for destroying enemy
             Destroy(gameObject);
             
         }
