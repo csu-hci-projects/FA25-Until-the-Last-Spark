@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLoopManager : MonoBehaviour
 {
     public static int money = 10; // Starting money
+    public static int health = 10;
     public bool endLoop;
 
 
@@ -12,6 +14,14 @@ public class GameLoopManager : MonoBehaviour
     void Start()
     {
         
+    }
+
+    void Update()
+    {
+        if (health < 1)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     IEnumerator GameLoop() {
