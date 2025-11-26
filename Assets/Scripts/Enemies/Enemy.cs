@@ -6,15 +6,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]  int health = 100;
     [SerializeField]  int speed = 10;
+    [SerializeField] private int moneyReward = 1;
+    [SerializeField] private int damageFactor = 1;
 
     public Transform[] nodes;
     public SpawnEnemy spawner;
 
     private int currentNode = 0;
-
-    private int moneyReward = 1;
-    private int damageFactor = 1;
-
     
 
     void Start()

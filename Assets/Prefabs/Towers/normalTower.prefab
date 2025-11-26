@@ -265,7 +265,7 @@ MonoBehaviour:
   health: 100
   damage: 20
   attackRange: 10
-  attackRate: 5
+  attackRate: 3
   element: None
   upgradeLevel: 0
   arrowPrefab: {fileID: 6901175132609185894, guid: 55c2daeb15df2254cb70c779c0123b56, type: 3}
