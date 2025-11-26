@@ -14,6 +14,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        money = 10;
         health = 10;
         wave = 0;
     }
