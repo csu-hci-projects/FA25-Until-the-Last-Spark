@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 2758590234246374368}
   - component: {fileID: 6543088965976749763}
   m_Layer: 0
-  m_Name: TowerToTestShop
+  m_Name: automaticTower
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,8 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   damage: 20
-  attackRange: 10
-  attackRate: 50
+  attackRange: 7.5
+  attackRate: 10
   element: None
   upgradeLevel: 0
   arrowPrefab: {fileID: 6901175132609185894, guid: 55c2daeb15df2254cb70c779c0123b56, type: 3}
