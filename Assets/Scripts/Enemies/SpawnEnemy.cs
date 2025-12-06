@@ -4,12 +4,15 @@ public class SpawnEnemy : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject strongEnemyPrefab;
     [SerializeField] Transform pathContainer;
 
     [SerializeField] float spawnInterval = 2f;
-    private int numOfEnemiesAlive = 0;
+    private int numOfEnemiesKilled = 1;
 
-    [SerializeField] int maxEnemies = 5;
+    private int enemiesSpawned = 0;
+
+    [SerializeField] int maxEnemies = 50;
 
     void Start()
     {
@@ -24,10 +27,19 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Spawn()
     {
-        if (numOfEnemiesAlive < maxEnemies)
+        enemiesSpawned++;
+        if (enemiesSpawned < maxEnemies)
         {
+            GameObject enemy;
             // Spawn the enemy at the first node
-            GameObject enemy = Instantiate(enemyPrefab, pathContainer.GetChild(0).position, Quaternion.identity);
+            if (enemiesSpawned % 10 != 0)
+            {
+                enemy = Instantiate(enemyPrefab, pathContainer.GetChild(0).position, Quaternion.identity);
+            }
+            else{
+                
+                enemy = Instantiate(strongEnemyPrefab, pathContainer.GetChild(0).position, Quaternion.identity);
+            }
 
             // Assign all children of pathContainer as the path nodes
             Transform[] nodes = new Transform[pathContainer.childCount];
@@ -42,13 +54,12 @@ public class SpawnEnemy : MonoBehaviour
 
             enemyScript.spawner = this;// Give the enemy a reference to this spawner
 
-            numOfEnemiesAlive++;
         }
 
     }
 
     public void EnemyDestroyed()
     {
-        numOfEnemiesAlive--;
+        numOfEnemiesKilled++;
     }  
 }
