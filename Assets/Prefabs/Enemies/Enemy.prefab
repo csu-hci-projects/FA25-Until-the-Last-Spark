@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6901175132609185894
+--- !u!1 &3691338693902542581
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 793041685006844567}
-  - component: {fileID: 463253200647441351}
-  - component: {fileID: 7007341661600370455}
-  - component: {fileID: 4002351803011803527}
-  - component: {fileID: 8444187676199238326}
+  - component: {fileID: 4629403747054623448}
+  - component: {fileID: 5219995920229409236}
+  - component: {fileID: 5574070060827646745}
+  - component: {fileID: 5278483256674493939}
+  - component: {fileID: 4591825598338312368}
   m_Layer: 0
-  m_Name: Arrow
-  m_TagString: Untagged
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &793041685006844567
+--- !u!4 &4629403747054623448
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901175132609185894}
+  m_GameObject: {fileID: 3691338693902542581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28, y: 0.13, z: 1.11}
+  m_LocalPosition: {x: 12.008239, y: 1.7738421, z: -27.26229}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &463253200647441351
+--- !u!33 &5219995920229409236
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901175132609185894}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7007341661600370455
+  m_GameObject: {fileID: 3691338693902542581}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5574070060827646745
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901175132609185894}
+  m_GameObject: {fileID: 3691338693902542581}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 97e4faede7afbb34da69d2b896490541, type: 2}
+  - {fileID: 2100000, guid: 76f06edfc17cdf946adcaeb88e0a980c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,13 +88,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4002351803011803527
-CapsuleCollider:
+--- !u!135 &5278483256674493939
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901175132609185894}
+  m_GameObject: {fileID: 3691338693902542581}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -106,21 +106,22 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.59
-  m_Height: 1.04
-  m_Direction: 2
+  serializedVersion: 3
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8444187676199238326
+--- !u!114 &4591825598338312368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6901175132609185894}
+  m_GameObject: {fileID: 3691338693902542581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f94bd27829eb59f47803693d25fdbf8b, type: 3}
+  m_Script: {fileID: 11500000, guid: 327e4cc75970f9e4381102757587b1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  health: 100
+  speed: 3
+  nodes: []
+  spawner: {fileID: 0}

@@ -6,12 +6,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]  int health = 100;
     [SerializeField]  int speed = 10;
+    [SerializeField] private int moneyReward = 1;
+    [SerializeField] private int damageFactor = 1;
 
     public Transform[] nodes;
     public SpawnEnemy spawner;
 
     private int currentNode = 0;
-
     
 
     void Start()
@@ -36,6 +37,9 @@ public class Enemy : MonoBehaviour
             {
                 // Reached end of path
                 enabled = false; // stop moving
+                spawner.EnemyDestroyed();
+                Destroy(gameObject);
+                GameLoopManager.health -= damageFactor;
             }
         }
 
@@ -60,7 +64,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             spawner.EnemyDestroyed();
-            GameLoopManager.money += 1; //Reward player with money for destroying enemy
+            GameLoopManager.money += moneyReward; //Reward player with money for destroying enemy
             Destroy(gameObject);
             
         }

@@ -54,7 +54,6 @@ public class ShopMenu : MonoBehaviour
             }
             boughtTower = false;
         }
-        Debug.Log("Money: " + GameLoopManager.money);
 
     }
 
