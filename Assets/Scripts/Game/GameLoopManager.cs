@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameLoopManager : MonoBehaviour
 {
-    public static int money = 10; // Starting money
+    public static int money = 20; // Starting money
     public static int health = 10;
     public static int wave = 0;
     public bool endLoop;
@@ -14,7 +14,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        money = 10;
+        money = 20;
         health = 10;
         wave = 0;
     }
