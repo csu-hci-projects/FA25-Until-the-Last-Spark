@@ -10,11 +10,16 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] Transform pathContainer;
 
     [SerializeField] float spawnInterval = 2f;
-    private int numOfEnemiesKilled = 1;
+    private int numOfEnemiesAlive = 0;
 
     private int enemiesSpawned = 0;
 
     [SerializeField] int maxEnemies = 50;
+
+    private bool wave1Start = true;
+    private bool wave2Start = false;
+    private bool wave3Start = false;
+    private bool wave4Start = false;
 
     private bool wave1Start = true;
     private bool wave2Start = false;
