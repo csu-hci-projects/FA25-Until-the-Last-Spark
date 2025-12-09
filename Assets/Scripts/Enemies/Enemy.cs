@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
 
         // Move toward the current node
         Transform target = nodes[currentNode];
+        transform.LookAt(target);
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
         // Check if reached node
