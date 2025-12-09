@@ -18,6 +18,7 @@ public class SpawnEnemy : MonoBehaviour
     private bool wave2Start = false;
     private bool wave3Start = false;
     private bool wave4Start = false;
+    private bool levelFinished = false;
 
     void Start()
     {
@@ -32,32 +33,25 @@ public class SpawnEnemy : MonoBehaviour
     {
         if(GameLoopManager.wave == 1 && wave1Start)
         {
-            wave1Start = false;
             StartCoroutine(spawnWave1());
-            wave2Start = true;
         }
         
         if(GameLoopManager.wave == 2 && wave2Start)
         {
-            wave2Start = false;
             StartCoroutine(spawnWave2());
-            wave3Start = true;
         }
 
         if(GameLoopManager.wave == 3 && wave3Start)
         {
-            wave3Start = false;
             StartCoroutine(spawnWave3());
-            wave4Start = true;
         }
 
         if(GameLoopManager.wave == 4 && wave4Start)
         {
-            wave4Start = false;
             StartCoroutine(spawnWave4());
         }
 
-        if(GameLoopManager.wave == 4 && wave4Start == false && numOfEnemiesAlive == 0)
+        if(GameLoopManager.wave == 4 && levelFinished == true && numOfEnemiesAlive == 0)
         {
             SceneManager.LoadScene(3); //Win Scene
         }
@@ -96,7 +90,8 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator spawnWave1()
     {
         Debug.Log("Wave 1");
-        for (int i = 0; i < 15; i++)
+        wave1Start = false;
+        for (int i = 0; i < 7; i++)
         {
             Spawn(0);
             yield return new WaitForSeconds(2f);
@@ -107,12 +102,13 @@ public class SpawnEnemy : MonoBehaviour
             Spawn(0);
             yield return new WaitForSeconds(1f);
         }
-        
+        wave2Start = true;
     }
 
     IEnumerator spawnWave2()
     {
         Debug.Log("Wave 2");
+        wave2Start = false;
         for (int i = 0; i < 5; i++)
         {
             Spawn(0);
@@ -135,18 +131,20 @@ public class SpawnEnemy : MonoBehaviour
             Spawn(1);
             yield return new WaitForSeconds(1f);
         }
+        wave3Start = true;
     }
 
     IEnumerator spawnWave3()
     {
         Debug.Log("Wave 3");
+        wave3Start = false;
         for (int i = 0; i < 20; i++)
         {
             Spawn(2);
             yield return new WaitForSeconds(.5f);
         }
-        yield return new WaitForSeconds(5f);
-        for (int i = 0; i < 30; i++)
+        yield return new WaitForSeconds(3f);
+        for (int i = 0; i < 20; i++)
         {
             Spawn(2);
             Spawn(0);
@@ -161,11 +159,13 @@ public class SpawnEnemy : MonoBehaviour
             Spawn(2);
             yield return new WaitForSeconds(.5f);
         }
+        wave4Start = true;
     }
 
     IEnumerator spawnWave4()
     {
         Debug.Log("Wave 4");
+        wave4Start = false;
         for (int i = 0; i < 5; i++)
         {
             Spawn(0);
@@ -183,6 +183,7 @@ public class SpawnEnemy : MonoBehaviour
         Spawn(3);
         yield return new WaitForSeconds(.8f);
         Spawn(3);
+        levelFinished = true;
     }
 
 }
