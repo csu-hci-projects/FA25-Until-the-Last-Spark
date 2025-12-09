@@ -5765,8 +5765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 3691338693902542581, guid: 4799a43c1477a9d44ac561858144d2e9, type: 3}
-  - {fileID: 3691338693902542581, guid: 2f228ebd7cfbb76499803b8596cf0b37, type: 3}
   - {fileID: 3691338693902542581, guid: b546fee6ab8bbc449af02b2ca50c7f55, type: 3}
+  - {fileID: 3691338693902542581, guid: 2f228ebd7cfbb76499803b8596cf0b37, type: 3}
   - {fileID: 3691338693902542581, guid: 83a9d49fc4239014db62415175d38d42, type: 3}
   pathContainer: {fileID: 936006198}
   spawnInterval: 1
