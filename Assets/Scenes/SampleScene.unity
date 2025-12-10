@@ -1717,6 +1717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: {fileID: 0}
+  startWaveButton: {fileID: 2116878478}
 --- !u!114 &293658156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6943,7 +6944,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.14509805, g: 0.7176471, b: 0.21176471, a: 1}
     m_PressedColor: {r: 0.1475169, g: 0.6132076, b: 0.20174117, a: 1}
     m_SelectedColor: {r: 0.14509805, g: 0.7176471, b: 0.21176471, a: 1}
-    m_DisabledColor: {r: 0.08095605, g: 0.2830189, b: 0.076094694, a: 1}
+    m_DisabledColor: {r: 0.78113204, g: 0.15877177, b: 0.1164328, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
