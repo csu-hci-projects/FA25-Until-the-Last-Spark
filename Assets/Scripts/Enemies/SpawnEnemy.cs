@@ -36,7 +36,6 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(String.Format("Number of enemies = {0}", numOfEnemiesAlive));
         if(GameLoopManager.wave == 1 && wave1Start)
         {
             StartCoroutine(spawnWave1());
