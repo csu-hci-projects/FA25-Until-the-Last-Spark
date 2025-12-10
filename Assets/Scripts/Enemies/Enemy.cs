@@ -46,6 +46,16 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        if (health <= 0)
+        {
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 0.4f);
+
+            spawner.EnemyDestroyed();
+            GameLoopManager.money += moneyReward; //Reward player with money for destroying enemy
+            Destroy(gameObject);
+            
+        }
+
     }
     
 /*
@@ -64,18 +74,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
-        {
-            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 0.4f);
-
-            spawner.EnemyDestroyed();
-            GameLoopManager.money += moneyReward; //Reward player with money for destroying enemy
-            Destroy(gameObject);
-            
-        } else
-        {
-            AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position, 0.1f);
-        }
+        AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position, 0.1f);
         Debug.Log("Health: " + health);
     }
 }
