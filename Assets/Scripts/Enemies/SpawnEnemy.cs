@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SpawnEnemy : MonoBehaviour
 {
@@ -21,11 +22,13 @@ public class SpawnEnemy : MonoBehaviour
     private bool wave3Start = false;
     private bool wave4Start = false;
 
-    private bool wave1Start = true;
-    private bool wave2Start = false;
-    private bool wave3Start = false;
-    private bool wave4Start = false;
-    private bool levelFinished = false;
+    public static bool wave1Start = true;
+    public static bool wave2Start = false;
+    public static bool wave3Start = false;
+    public static bool wave4Start = false;
+    public static bool levelFinished = false;
+    public static bool activeWave = false;
+    private bool waveFinished = true;
 
     void Start()
     {
@@ -33,11 +36,14 @@ public class SpawnEnemy : MonoBehaviour
         wave2Start = false;
         wave3Start = false;
         wave4Start = false;
+        activeWave = false;
+        waveFinished = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(String.Format("Number of enemies = {0}", numOfEnemiesAlive));
         if(GameLoopManager.wave == 1 && wave1Start)
         {
             StartCoroutine(spawnWave1());
@@ -61,6 +67,16 @@ public class SpawnEnemy : MonoBehaviour
         if(GameLoopManager.wave == 4 && levelFinished == true && numOfEnemiesAlive == 0)
         {
             SceneManager.LoadScene(3); //Win Scene
+        }
+
+        if(activeWave && waveFinished && numOfEnemiesAlive == 0)
+        {
+            activeWave = false;
+        }
+
+        if(numOfEnemiesAlive < 0)
+        {
+            numOfEnemiesAlive = 0;
         }
     }
 
@@ -99,6 +115,8 @@ public class SpawnEnemy : MonoBehaviour
     {
         Debug.Log("Wave 1");
         wave1Start = false;
+        activeWave = true;
+        waveFinished = false;
         for (int i = 0; i < 7; i++)
         {
             Spawn(0);
@@ -111,12 +129,15 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         wave2Start = true;
+        waveFinished = true;
     }
 
     IEnumerator spawnWave2()
     {
         Debug.Log("Wave 2");
         wave2Start = false;
+        activeWave = true;
+        waveFinished = false;
         for (int i = 0; i < 5; i++)
         {
             Spawn(0);
@@ -140,12 +161,15 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
         wave3Start = true;
+        waveFinished = true;
     }
 
     IEnumerator spawnWave3()
     {
         Debug.Log("Wave 3");
         wave3Start = false;
+        activeWave = true;
+        waveFinished = false;
         for (int i = 0; i < 20; i++)
         {
             Spawn(2);
@@ -168,12 +192,15 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(.5f);
         }
         wave4Start = true;
+        waveFinished = true;
     }
 
     IEnumerator spawnWave4()
     {
         Debug.Log("Wave 4");
         wave4Start = false;
+        activeWave = true;
+        waveFinished = false;
         for (int i = 0; i < 5; i++)
         {
             Spawn(0);
@@ -192,6 +219,7 @@ public class SpawnEnemy : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         Spawn(3);
         levelFinished = true;
+        waveFinished = true;
     }
 
 }
