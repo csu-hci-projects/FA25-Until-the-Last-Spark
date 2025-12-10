@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int moneyReward = 1;
     [SerializeField] private int damageFactor = 1;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip hitSound;
 
     public Transform[] nodes;
     public SpawnEnemy spawner;
@@ -65,16 +66,15 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-
-            if (deathSound != null) 
-            {
-                AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 0.7f);
-            }
+            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 0.4f);
 
             spawner.EnemyDestroyed();
             GameLoopManager.money += moneyReward; //Reward player with money for destroying enemy
             Destroy(gameObject);
             
+        } else
+        {
+            AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position, 0.1f);
         }
         Debug.Log("Health: " + health);
     }
