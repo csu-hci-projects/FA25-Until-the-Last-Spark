@@ -51,6 +51,7 @@ MonoBehaviour:
   moneyReward: 5
   damageFactor: 5
   deathSound: {fileID: 8300000, guid: badf7a91ee4c40e4ab7c1b8276690e77, type: 3}
+  hitSound: {fileID: 8300000, guid: 90e541d61cd51e74f838537da6a841e4, type: 3}
   nodes: []
   spawner: {fileID: 0}
 --- !u!136 &2528816973578280128
