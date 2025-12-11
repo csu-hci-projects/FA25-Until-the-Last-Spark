@@ -75,6 +75,5 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position, 0.1f);
-        Debug.Log("Health: " + health);
     }
 }

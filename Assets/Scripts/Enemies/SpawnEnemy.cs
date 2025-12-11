@@ -13,14 +13,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] float spawnInterval = 2f;
     private int numOfEnemiesAlive = 0;
 
-    private int enemiesSpawned = 0;
-
     [SerializeField] int maxEnemies = 50;
-
-    private bool wave1Start = true;
-    private bool wave2Start = false;
-    private bool wave3Start = false;
-    private bool wave4Start = false;
 
     public static bool wave1Start = true;
     public static bool wave2Start = false;
@@ -43,7 +36,6 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(String.Format("Number of enemies = {0}", numOfEnemiesAlive));
         if(GameLoopManager.wave == 1 && wave1Start)
         {
             StartCoroutine(spawnWave1());
@@ -82,10 +74,9 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Spawn(int enemyPrefabNum)
     {
-        enemiesSpawned++;
-        if (enemiesSpawned < maxEnemies)
+        if (numOfEnemiesAlive < maxEnemies)
         {
-            GameObject enemy;
+            numOfEnemiesAlive++;
             // Spawn the enemy at the first node
             GameObject enemy = Instantiate(enemyPrefab[enemyPrefabNum], pathContainer.GetChild(0).position, Quaternion.identity);
 
@@ -108,7 +99,7 @@ public class SpawnEnemy : MonoBehaviour
 
     public void EnemyDestroyed()
     {
-        numOfEnemiesKilled++;
+        numOfEnemiesAlive--;
     }  
 
     IEnumerator spawnWave1()
